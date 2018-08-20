@@ -10,5 +10,7 @@ package test;
  * @author user only
  */
 public class TestView {
-    
+    public static void main(String[] args) {
+        
+    }
 }
