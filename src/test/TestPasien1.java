@@ -6,6 +6,7 @@
 
 package test;
 
+import java.text.SimpleDateFormat;
 import model.Pasien;
 
 /**
@@ -17,6 +18,7 @@ public class TestPasien1 {
         Pasien puspa = new Pasien("Puspa");
         puspa.setTanggalLahir(1974, 1, 12);
         System.out.println("Umur = "+puspa.getUsia());
+        System.out.println("Rekam Medis = "+puspa.setTanggalDaftar()+""+puspa.setKodeNama());
     }
     
 }
