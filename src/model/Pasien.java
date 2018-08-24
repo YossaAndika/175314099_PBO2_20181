@@ -6,6 +6,7 @@
 
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,6 +16,9 @@ import java.util.Date;
 public class Pasien {
     private String nama;
     private Date tanggalLahir;
+    private String alamat;
+    private String tempatLahir;
+    private String RekamMedis;
 
     public Pasien(String nama) {
         this.nama = nama;
@@ -61,5 +65,18 @@ public class Pasien {
     public int getUsia(){
         Date today = new Date();
         return today.getYear() - tanggalLahir.getYear();
+    }
+    
+    public String setKodeNama(){
+      String sub_nama = nama.substring(0, 3);
+        return sub_nama; 
+    }
+    
+    public String setTanggalDaftar(){
+      Date date = new Date();
+      SimpleDateFormat ft = 
+      new SimpleDateFormat ("yyyyMMdd");
+      // display time and date using toString()
+      return ft.format(date);
     }
 }
