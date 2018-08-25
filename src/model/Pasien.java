@@ -20,6 +20,32 @@ public class Pasien {
     private String tempatLahir;
     private String RekamMedis;
 
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getTempatLahir() {
+        return tempatLahir;
+    }
+
+    public void setTempatLahir(String tempatLahir) {
+        this.tempatLahir = tempatLahir;
+    }
+
+    public String getRekamMedis() {
+        return RekamMedis;
+    }
+
+    public void setRekamMedis(String RekamMedis) {
+        this.RekamMedis = RekamMedis;
+    }
+    
+    
+
     public Pasien(String nama) {
         this.nama = nama;
     }
@@ -67,16 +93,16 @@ public class Pasien {
         return today.getYear() - tanggalLahir.getYear();
     }
     
-    public String setKodeNama(){
-      String sub_nama = nama.substring(0, 3);
-        return sub_nama; 
-    }
     
-    public String setTanggalDaftar(){
+    public void Mendaftar(){
       Date date = new Date();
+      RekamMedis= "yyyyMMdd";
       SimpleDateFormat ft = 
-      new SimpleDateFormat ("yyyyMMdd");
-      // display time and date using toString()
-      return ft.format(date);
+      new SimpleDateFormat (RekamMedis);
+      
+      String sub_nama = nama.substring(0, 3);
+      
+        String RekamMedis = ft.format(date).concat(sub_nama);
+        System.out.println(RekamMedis);
     }
 }
