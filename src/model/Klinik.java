@@ -13,17 +13,37 @@ public class Klinik {
     private String namaKlinik;
     private String idKlinik;
     
+    /***
+     * membuat konstruktorkosong pada kelas antriPasien
+     */
+    
     public Klinik(){
         
     }
+    
+    /***
+     * membuat method getNamaKlinik dengan tipe String untuk mengembalikan nilia menggunakan
+     * @return namaKlinik
+     */
 
     public String getNamaKlinik() {
         return namaKlinik;
     }
+    
+     /***
+     * membuat method setNamaKlinik bertipe void untuk menyamakan nilai variabel
+     * namaKlinik global dan variabel namaKlinik lokal 
+     * @param namaKlinik
+     */
 
     public void setNamaKlinik(String namaKlinik) {
         this.namaKlinik = namaKlinik;
     }
+    
+    /***
+     * membuat method getIdKlinik dengan tipe String untuk mengembalikan nilia menggunakan
+     * @return idKlinik
+     */
 
     public String getIdKlinik() {
         return idKlinik;
