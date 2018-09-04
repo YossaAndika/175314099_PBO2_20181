@@ -10,7 +10,7 @@ package model;
  * @author windows10
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Pasien pasien1 = new Pasien("Puspa");
         Dokter dokter1 = new Dokter("Jimmy");
         antriPasien antri = new antriPasien();
@@ -36,7 +36,8 @@ public class Main {
         }catch (Exception ex){
         ex.printStackTrace();
     }
-        
+        System.out.println("Antrian Pasien : "+antri.panggilPasien(0).getNama());
+        System.out.println("");
         System.out.println("___________DATA PASIEN___________");
         System.out.println("Nama                : "+pasien1.getNama());
         System.out.println("Alamat              : "+pasien1.getAlamat());
