@@ -24,26 +24,56 @@ public class Dokter {
     private int bulanLahir;
     //deklarsi variabel tahunLahir bertipe integer dengan sifat private
     private int tahunLahir;
-
+    
+    /***
+     * membuat konstruktor kosong pada kelas Dokter
+     */
+    
     public Dokter() {
 
     }
+    
+    /***
+     * membuat konstruktor dengan parameter nama bertipe String
+     * @param nama 
+     */
 
     public Dokter(String nama) {
         this.nama = nama;
     }
     
+    /***
+     * membuat method getNama dengan tipe String dan mengembalikan nilai menggunakan
+     * @return nama
+     */
+    
     public String getNama(){
         return nama;
     }
+    
+    /***
+     * membuat method getAlamat dengan tipe String dan mengembalikan nilai menggunakan
+     * @return alamat
+     */
 
     public String getAlamat() {
         return alamat;
     }
+    
+    /***
+     * membuat method setAlamat dengan tipe void untuk menyamakan nilai variabel global
+     * alamat dan variabel lokal alamat
+     * @param alamat 
+     */
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
+    
+    /***
+     * membuat method getNoPegawai dengan tipe String dan mengembalikan nilai menggunakan
+     * @return noPegawai
+     */
 
     public String getNoPegawai() {
         return noPegawai;
@@ -64,14 +94,29 @@ public class Dokter {
             throw new Exception("Nomor yang Anda masukan salah");
         }
     }
+    
+    /***
+     * method getTempatLahir dan mengembalikan nilai
+     * @return tempatLahir
+     */
 
     public String getTempatLahir() {
         return tempatLahir;
     }
+    
+    /***
+     * method untuk memasukan nilai tempatLahir dan menyamalannya dengan variabel lokal
+     * @param tempatLahir 
+     */
 
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
     }
+    
+    /***
+     * method getTanggalLahir dan mengembalikan nilai mengembalikan nilai dengan
+     * @return tanggalLahir
+     */
 
     public int getTanggalLahir() {
         return tanggalLahir;
@@ -98,6 +143,11 @@ public class Dokter {
 
         }
     }
+    
+    /***
+     * method getBulanLahir dengan nilai pengembalian 
+     * @return bulanLahir
+     */
 
     public int getBulanlLahir() {
         return bulanLahir;
@@ -124,6 +174,11 @@ public class Dokter {
             throw new Exception("Bulan yang Anda masukan kurang dari batas yang ditentukan ");
         }
     }
+    
+    /***
+     * membuat method getTahunLahir dengan tipe integer dan mengembalikan nilai menggunakan
+     * @return tahunLahir
+     */
 
     public int getTahunlLahir() {
         return tahunLahir;
