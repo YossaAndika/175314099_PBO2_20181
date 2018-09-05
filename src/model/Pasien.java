@@ -22,33 +22,74 @@ public class Pasien {
     private int tahunLahir;
     private String RekamMedis;
     
+    /***
+     * membuat konstruktor kosong di kelas Pasien
+     */
+    
     public Pasien(){
         
     }
+    
+    /***
+     * membuat konstruktor dengan parameter nama dengan tipe String
+     * @param nama 
+     */
     
     public Pasien(String nama){
         this.nama=nama;
     }
     
+    /***
+     * membuat method getNama bertipe String dan mengembalikan nilai menggunakan
+     * @return nama
+     */
+    
     public String getNama(){
         return nama;
     }
+    
+    /***
+     * membuat methodgetAlamat bertipe String dan mengembalikan nilai menggunakan
+     * @return alamat
+     */
 
     public String getAlamat() {
         return alamat;
     }
+    
+    /***
+     * membuat method setAlamat bertipe void dan menyamakan nilai variabel global
+     * alamat dengan variabel lokal alamat
+     * @param alamat 
+     */
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
+    
+    /***
+     * membuat method getTempatLahir bertipe String dan mengembalikan nilai menggunakan
+     * @return tempatLahir
+     */
 
     public String getTempatLahir() {
         return tempatLahir;
     }
+    
+    /***
+     * membuat method setTempatLahir bertipe voiddan menyamakan nilai variabel global
+     * tempatLahir dengan variabel lokal tempatLahir
+     * @param tempatLahir 
+     */
 
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
     }
+    
+    /***
+     * membuat method getRekamMedis bertipe String dan mengembalikan nilai menggunakan
+     * @return RekamMedis
+     */
 
     public String getRekamMedis() {
         return RekamMedis;
@@ -70,6 +111,11 @@ public class Pasien {
             throw new Exception("Nomor Yang Anda Masukan Salah");
         }
     }
+    
+    /***
+     * mengembalikan nilai getTanggalLahir yang bertipe integer menggunakan
+     * @return tanggalLahir
+     */
     
     public int getTanggalLahir() {
         return tanggalLahir;
@@ -95,6 +141,11 @@ public class Pasien {
         }
     }
     
+    /***
+     * mengembalikan nilai getbulanLahir yang bertipe integer menggunakan
+     * @return bulanLahir
+     */
+    
     public int getbulanLahir(){
         return bulanLahir;
     }
@@ -119,7 +170,10 @@ public class Pasien {
         }   
     }
 
-    
+    /***
+     * mengembalikan nilai gettahunLahir yang bertipe integer menggunakan
+     * @return tahunLahir
+     */
     
     public int gettahunLahir(){
         return tahunLahir;
@@ -147,13 +201,17 @@ public class Pasien {
      */
     
     public String Mendaftar(){
+        //deklarasi objek baru bernama date dengan tipe Date
       Date date = new Date();
+      //deklarasi variabel RekamMedis dengan format yyyyMMdd (tahun-bulan-tanggal)
       RekamMedis= "yyyyMMdd";
+      //deklarasi objek baru bernama ft dengan tipe SimpleDateFormat
       SimpleDateFormat ft = 
       new SimpleDateFormat (RekamMedis);
       
+      //deklarasi nilai sub_nama dengan 3 huruf pertama dari variabel nama menggunakan subString
       String sub_nama = nama.substring(0, 3);
-      
+      //mengembalikan nilai RekamMedis
         return RekamMedis = ft.format(date).concat(sub_nama);
     }
 
