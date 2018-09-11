@@ -48,6 +48,11 @@ public class Klinik {
     public String getIdKlinik() {
         return idKlinik;
     }
+    
+    /***
+     * setIdKlinik tipe String menyamakan nilai variabel global dan lokal
+     * @param idKlinik 
+     */
 
     public void setIdKlinik(String idKlinik) {
         this.idKlinik = idKlinik;
