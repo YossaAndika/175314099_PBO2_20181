@@ -9,7 +9,7 @@ package model;
  *
  * @author windows10
  */
-public class antriPasien {
+public class AntrianPasien {
     private int tanggalAntri;
     private int bulanAntri;
     private int tahunAntri;
@@ -22,7 +22,7 @@ public class antriPasien {
      * membuat konstruktorkosong pada kelas antriPasien
      */
     
-    public antriPasien(){
+    public AntrianPasien(){
         
     }
     

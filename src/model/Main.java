@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Pasien pasien1 = new Pasien("Puspa");
         Dokter dokter1 = new Dokter("Jimmy");
-        antriPasien antri = new antriPasien();
+        AntrianPasien antri = new AntrianPasien();
         
         try{
             pasien1.setAlamat("Klaten");
