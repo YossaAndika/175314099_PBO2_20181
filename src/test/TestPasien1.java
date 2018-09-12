@@ -16,7 +16,7 @@ import model.Pasien;
 public class TestPasien1 {
     public static void main(String[] args) {
         Pasien puspa = new Pasien("Puspa");
-//        puspa.setTanggalLahir(1974, 1, 12);
+//       puspa.setTanggalLahir(1974, 1, 12);
         puspa.setAlamat("Klaten");
         puspa.setTempatLahir("Klaten");
         

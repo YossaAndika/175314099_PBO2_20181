@@ -7,6 +7,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,6 +22,8 @@ public class Pasien {
     private int bulanLahir;
     private int tahunLahir;
     private String RekamMedis;
+    private String nik;
+    public static ArrayList<Pasien> daftarpasienKlinik = new ArrayList<Pasien>();
     
     /***
      * membuat konstruktor kosong di kelas Pasien
@@ -29,7 +32,18 @@ public class Pasien {
     public Pasien(){
         
     }
+
+    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String nik) {
+        this.nama = nama;
+        this.tanggalLahir = tanggalLahir;
+        this.alamat = alamat;
+        this.tempatLahir = tempatLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
+        this.RekamMedis = RekamMedis;
+        this.nik = nik;
     
+    } 
     /***
      * membuat konstruktor dengan parameter nama dengan tipe String
      * @param nama 
@@ -38,7 +52,7 @@ public class Pasien {
     public Pasien(String nama){
         this.nama=nama;
     }
-    
+ 
     /***
      * membuat method getNama bertipe String dan mengembalikan nilai menggunakan
      * @return nama
@@ -194,27 +208,56 @@ public class Pasien {
         }
     }
     
+    public String getNik(){
+        return nik;
+    }
+    
+    public void setNik(String nik) {
+        nik = Mendaftar();
+    }
+    
+    public static ArrayList<Pasien> getDaftarpasienKlinik() {
+        return daftarpasienKlinik;
+    }
+
+    public static void setDaftarpasienKlinik(ArrayList<Pasien> daftarpasienKlinik) {
+        Pasien.daftarpasienKlinik = daftarpasienKlinik;
+    }
+
     /***
      * method ini digunakan untuk mengatur foramat rekam medis pasien dengan menggunakan
      * tanggal mendaftar dan 3 huruf pertama dari nama pasien
      * @return 
      */
-    
-    public String Mendaftar(){
+    public String Mendaftar() {
         //deklarasi objek baru bernama date dengan tipe Date
-      Date date = new Date();
-      //deklarasi variabel RekamMedis dengan format yyyyMMdd (tahun-bulan-tanggal)
-      RekamMedis= "yyyyMMdd";
-      //deklarasi objek baru bernama ft dengan tipe SimpleDateFormat
-      SimpleDateFormat ft = 
-      new SimpleDateFormat (RekamMedis);
-      
-      //deklarasi nilai sub_nama dengan 3 huruf pertama dari variabel nama menggunakan subString
-      String sub_nama = nama.substring(0, 3);
-      //mengembalikan nilai RekamMedis
+        Date date = new Date();
+        //deklarasi variabel RekamMedis dengan format yyyyMMdd (tahun-bulan-tanggal)
+        RekamMedis= "yyyyMMdd";
+        //deklarasi objek baru bernama ft dengan tipe SimpleDateFormat
+        SimpleDateFormat ft =
+                new SimpleDateFormat (RekamMedis);
+        
+        //deklarasi nilai sub_nama dengan 3 huruf pertama dari variabel nama menggunakan subString
+        String sub_nama = nama.substring(0, 3);
+        //mengembalikan nilai RekamMedis
         return RekamMedis = ft.format(date).concat(sub_nama);
     }
 
 
-}
+    public static void tambahPasienBaru(Pasien pasien) {
+        daftarpasienKlinik.add(pasien);
+    }
 
+    public static Pasien cariPasien(String NoRM) {
+        Pasien result = null;
+        boolean found = false;
+        for (int i = 0; i < daftarpasienKlinik.size(); i++) {
+            if (daftarpasienKlinik.get(i).getNik().equals(NoRM)) {
+                found = true;
+                result = daftarpasienKlinik.get(i);
+            }
+        }
+            return result;
+    }
+}
