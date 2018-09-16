@@ -62,6 +62,10 @@ public class Pasien {
         return nama;
     }
     
+    public void setNama(String nama){
+        this.nama=nama;
+    }
+    
     /***
      * membuat methodgetAlamat bertipe String dan mengembalikan nilai menggunakan
      * @return alamat
@@ -116,14 +120,8 @@ public class Pasien {
      * @throws Exception 
      */
 
-    public void setRekamMedis(String RekamMedis) throws Exception {
-        //panjang rekam medis yang harus dimasukan lebih dari 6
-        if(this.RekamMedis.length() > 6){
+    public void setRekamMedis(String RekamMedis) {
             this.RekamMedis = RekamMedis;
-            //jika panjang rekam medis yang dimasukan kurang dari dari 6
-        }else{
-            throw new Exception("Nomor Yang Anda Masukan Salah");
-        }
     }
     
     /***
@@ -141,18 +139,8 @@ public class Pasien {
      * @throws Exception 
      */
 
-    public void setTanggalLahir(int tanggalLahir)throws Exception {
-        //tanggal lahir yang dimasukan tidak boleh kurang dari 1 atau harus lebih dari 0
-        if(tanggalLahir > 0){
-            //tanggal lahir yang dimasukan tidak boleh lebih dari 31
-        if(tanggalLahir <= 31){
+    public void setTanggalLahir(int tanggalLahir){
            this.tanggalLahir = tanggalLahir;
-           //jika tanggal lahir yang dimasukan lebih dari 31
-        }else{ throw new Exception ("Tanggal yang Anda masukan melebihi batas yang ditentukan");}
-        //jika tanggal lahir yang dimasukan kurang dari 1
-    }else{ throw new Exception ("Tanggal yang Anda masukan kurang dari batas yang ditentukan ");
-    
-        }
     }
     
     /***
@@ -170,18 +158,8 @@ public class Pasien {
      * @throws Exception 
      */
     
-    public void setbulanLahir(int bulanLahir)throws Exception{
-        //bulan lahir yang dimasukan tidak boleh kurang dari 1 atau harus lebih dari 0
-        if(bulanLahir > 0){
-            //bulan lahir yang dimasukan tidak boleh lebih dari 12
-        if(bulanLahir <= 12){
-           this.bulanLahir = bulanLahir;
-           //jika bulan lahir yang dimasukan lebih dari 12
-        }else{ throw new Exception ("Bulan yang Anda masukan melebihi batas yang ditentukan");
-        
-        }//jika bulan lahir yang dimasukan kurang dari 1
-    }else{ throw new Exception ("Bulan yang Anda masukan kurang dari batas yang ditentukan ");
-        }   
+    public void setbulanLahir(int bulanLahir){
+           this.bulanLahir = bulanLahir;  
     }
 
     /***
@@ -199,13 +177,8 @@ public class Pasien {
      * @throws Exception 
      */
     
-    public void settahunLahir(int tahunLahir)throws Exception{
-        //tahun lahir yang dimasukan tidak boleh kurang dari 1 atau harus lebih dari 0
-        if(tahunLahir > 0){
+    public void settahunLahir(int tahunLahir){
            this.tahunLahir = tahunLahir;
-           //jika tahun lahir yang dimasukan kurang dari 1
-        }else{ throw new Exception ("Tahun yang diinputkan salah");
-        }
     }
     
     public String getNik(){
