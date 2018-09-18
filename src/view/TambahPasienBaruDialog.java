@@ -45,81 +45,92 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
     ,"2008","2009","2010","2011","2012","2013"
     ,"2014","2015","2016","2017","2018"};
     
+    /***
+     * digunakan untuk membuat object
+     */
     public TambahPasienBaruDialog(){
         init();
     }
     
+    /***
+     * digunakan untuk membuat object dengan variabel title bertipe String
+     * @param title 
+     */
     public TambahPasienBaruDialog(String title){
         this.setTitle(title);
         init();
     }
     
+    /***
+     * digunakan untuk membuat tampilan
+     */
     public void init(){
-        this.setLayout(null);
+        this.setLayout(null);//set layout null
         
-        judulLabel = new JLabel("Pasien Baru");
-        judulLabel.setFont(new Font(null, Font.CENTER_BASELINE, 16));
-        setBounds(70, 20, 150, 10);
+        judulLabel = new JLabel("Pasien Baru");//object judulLabel bertipe JLabel
+        judulLabel.setFont(new Font(null, Font.CENTER_BASELINE, 16));//mengatur font
+        setBounds(70, 20, 150, 10);//mengatur tata letak
         this.add(judulLabel);
         
-        namaLabel = new JLabel();
+        namaLabel = new JLabel();//object namaLabel bertipe JLabel
         namaLabel.setText("Nama");
-        namaLabel.setBounds(50, 90, 80, 20);
+        namaLabel.setBounds(50, 90, 80, 20);//mengatur tata letak
         this.add(namaLabel);
 
-        namaText = new JTextField();
-        namaText.setBounds(130, 90, 120, 20);
+        namaText = new JTextField();//object namaLabel bertipe JTextField
+        namaText.setBounds(130, 90, 120, 20);//mengatur tata letak
         this.add(namaText);
 
-        lakiRadio = new JRadioButton("Laki-laki");
-        lakiRadio.setBounds(130, 120, 80, 20);
+        lakiRadio = new JRadioButton("Laki-laki");//object lakiRadio bertipe JRadioButton
+        lakiRadio.setBounds(130, 120, 80, 20);//mengatur tata letak
         this.add(lakiRadio);
 
-        perempuanRadio = new JRadioButton("Perempuan");
-        perempuanRadio.setBounds(220, 120, 100, 20);
+        perempuanRadio = new JRadioButton("Perempuan");//object perempuanRadio bertipe JRadioButton
+        perempuanRadio.setBounds(220, 120, 100, 20);//mengatur tata letak
         this.add(perempuanRadio);
 
-        ButtonGroup KelaminButonGroup = new ButtonGroup();
+        ButtonGroup KelaminButonGroup = new ButtonGroup();//object kelaminButtonGroup bertipe ButtonGroup
         KelaminButonGroup.add(lakiRadio);
         KelaminButonGroup.add(perempuanRadio);
+        /*memasukan lakiRadio dan perempuanRadio ke KelaminButtonGroup*/
 
-        tanggalalhirLabel = new JLabel("Tgl Lahir");
-        tanggalalhirLabel.setBounds(50, 150, 80, 20);
+        tanggalalhirLabel = new JLabel("Tgl Lahir");//object tanggallahirLabel bertipe JLabel
+        tanggalalhirLabel.setBounds(50, 150, 80, 20);//mengatur tata letak
         this.add(tanggalalhirLabel);
 
-        tanggalCombo = new JComboBox(tgl);
-        tanggalCombo.setBounds(130, 150, 80, 20);
+        tanggalCombo = new JComboBox(tgl);//object tanggalCombo bertipe JComboBox
+        tanggalCombo.setBounds(130, 150, 80, 20);//mengatur tata letak
         this.add(tanggalCombo);
 
-        bulanCombo = new JComboBox(bln);
-        bulanCombo.setBounds(230, 150, 80, 20);
+        bulanCombo = new JComboBox(bln);//object bulanCombo bertipe JComboBox
+        bulanCombo.setBounds(230, 150, 80, 20);//mengatur tata letak
         this.add(bulanCombo);
 
-        tahunCombo = new JComboBox(thn);
-        tahunCombo.setBounds(330, 150, 80, 20);
+        tahunCombo = new JComboBox(thn);//object tahunCombo bertipe JComboBox
+        tahunCombo.setBounds(330, 150, 80, 20);//mengatur tata letak
         this.add(tahunCombo);
 
-        alamatLabel = new JLabel();
+        alamatLabel = new JLabel();//object alamtLabel bertipe JLabel
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 180, 80, 20);
+        alamatLabel.setBounds(50, 180, 80, 20);//mengatur tata letak
         this.add(alamatLabel);
 
-        alamatText = new JTextField();
-        alamatText.setBounds(130, 180, 120, 20);
+        alamatText = new JTextField();//object alamatText bertipe JTextField
+        alamatText.setBounds(130, 180, 120, 20);//mengatur tata letak
         this.add(alamatText);
 
-        nikLabel = new JLabel();
+        nikLabel = new JLabel();//object nikLabel bertipe JLabel
         nikLabel.setText("NIK");
-        nikLabel.setBounds(50, 210, 80, 20);
+        nikLabel.setBounds(50, 210, 80, 20);//mengatur tata letak
         this.add(nikLabel);
 
-        nikText = new JTextField();
-        nikText.setBounds(130, 210, 120, 20);
+        nikText = new JTextField();//object nikText bertipe JTextField
+        nikText.setBounds(130, 210, 120, 20);//mengatur tata letak
         this.add(nikText);
 
-        tambahButton = new JButton();
+        tambahButton = new JButton();//object tambahButton bertipe JButton
         tambahButton.setText("Tambah");
-        tambahButton.setBounds(130, 240, 80, 30);
+        tambahButton.setBounds(130, 240, 80, 30);//mengatur tata letak
         this.add(tambahButton);
 
         tambahButton.addActionListener(this);
@@ -127,9 +138,13 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
 }
     
 
+    /***
+     * digunakan untuk pengoprasian tiap object
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
- if (e.getSource() == tambahButton) {
+ if (e.getSource() == tambahButton) {//pembanding jika yang diklik tambahButton
             Pasien baru = new Pasien();
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());

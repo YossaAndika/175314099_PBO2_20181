@@ -5,15 +5,15 @@
  */
 package testView;
 
-import view.MainFrame;
+import view.FrameUtama;
 
 /**
  *
  * @author windows10
  */
-public class testMainFrame {
+public class testFrameUtama {
     public static void main(String[] args) {
-        MainFrame test = new MainFrame();
+        FrameUtama test = new FrameUtama();
         test.setSize(600, 400);
         test.setVisible(true);
     }
