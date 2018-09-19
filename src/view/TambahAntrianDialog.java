@@ -33,7 +33,6 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JLabel alamatLabel;
     private JLabel tanggalAntri;
     private JLabel klinik;
-    private JTextField namaKlinik;
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
@@ -41,10 +40,12 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JComboBox tanggal;
     private JComboBox bulan;
     private JComboBox tahun;
-    private String tgl[] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"
+    private JComboBox klinikCombo;
+    private String tgl[] = {"Tanggal","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"
     ,"21","22","23","24","25","26","27","28","29","30","31"};
-    private String bln[]={"JAN","FEB","MAR","APR","MEI","JUN","JUL","AGST","SEP","OCT","NOV","DEC"};
-    private String thn[]={"17","18"};
+    private String bln[]={"Bulan","1","2","3","4","5","6","7","8","9","10","11","12"};
+    private String thn[]={"Tahun","17","18"};
+    private String Klinik[]={"PILIH","THT","Kulit","Kandungan","Penyakit Dalam","Mata","Radiologi"};
     
     /***
      * digunakan untuk membuat object
@@ -122,9 +123,9 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         klinik.setBounds(50, 190, 100, 20);//mengatur tata letak judulLabel
         this.add(klinik);//menambahkan ke TambahAntrianDialog
         
-        namaKlinik = new JTextField();
-        namaKlinik.setBounds(150, 190, 200, 20);//mengatur tata letak judulLabel
-        this.add(namaKlinik);//menambahkan ke TambahAntrianDialog
+        klinikCombo = new JComboBox(Klinik);
+        klinikCombo.setBounds(150, 190, 200, 20);//mengatur tata letak judulLabel
+        this.add(klinikCombo);//menambahkan ke TambahAntrianDialog
 
         tambahButton = new JButton();
         tambahButton.setText("Tambah");
@@ -135,12 +136,13 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         namaText.addActionListener(this);
         alamatText.addActionListener(this);
         tambahButton.addActionListener(this);
-        namaKlinik.addActionListener(this);
+        klinikCombo.addActionListener(this);
         tanggal.addActionListener(this);
         bulan.addActionListener(this);
         tahun.addActionListener(this);
         /*memanggil addActionListener*/
 
+        
     }
 
     /***
@@ -149,15 +151,22 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
+        Pasien test = Pasien.cariPasien(noRMText.getText());
         if (ae.getSource() == noRMText) {//pembanding jika yang di klik noRMText
             Pasien cari = Pasien.cariPasien(noRMText.getText());
+            
             if (cari != null) {//pembanding jika variabel cari tidak sama null
                 namaText.setText(cari.getNama());
                 alamatText.setText(cari.getAlamat());
             }
         }
         if (ae.getSource() == tambahButton) {//pembanding jika yang di klik tambahButton
-            JOptionPane.showMessageDialog(null, "Antrian Ditambahkan");
+            for (int i = 0; i < Pasien.daftarpasienKlinik.size(); i++) {
+                int antri = i+1;
+                if (test == Pasien.daftarpasienKlinik.get(i)) {
+                    JOptionPane.showMessageDialog(null, "Antian Nomor :"+antri);
+                }
+            }
         }
     }
 }

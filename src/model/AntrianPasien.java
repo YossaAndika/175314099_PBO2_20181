@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author windows10
@@ -17,7 +19,8 @@ public class AntrianPasien {
     private final int JUMLAH_PASIEN_MAKSIMAL = 50;
     private Klinik klinik;
     private Pasien[] DaftarPasien = new Pasien[JUMLAH_PASIEN_MAKSIMAL];
-    
+    public static ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();
+    public static ArrayList<AntrianPasien> daftarAntrian = new ArrayList<AntrianPasien>();
     /***
      * membuat konstruktorkosong pada kelas antriPasien
      */
@@ -166,6 +169,53 @@ public class AntrianPasien {
   
     }
     
+    public void mendaftar(Pasien pasien, int tanggal, int bulan, int tahun){
+        daftarPasienAntri.add(pasien);
+    }
+    
+     public static AntrianPasien cariPasien(String NoRM) {
+        AntrianPasien result = null;
+        boolean found = false;
+        for (int i = 0; i < daftarAntrian.size(); i++) {
+            if (daftarAntrian.get(i).daftarPasienAntri.equals(NoRM)) {
+                found = true;
+                result = daftarAntrian.get(i);
+            }
+        }
+            return result;
+    }
+     
+     public static Pasien cariPasien(String noRM, int tanggal, int bulan, int tahun){ 
+        Pasien result = null;
+        boolean found = false;
+        for (int i = 0; i < daftarAntrian.size(); i++) {
+            for (int j = 0; j < daftarAntrian.get(i).daftarPasienAntri.size(); j++) {
+             if (daftarAntrian.get(i).daftarPasienAntri.get(j).getNik().equals(noRM)) {
+                if (daftarAntrian.get(i).daftarPasienAntri.get(j).getTanggalLahir()==tanggal) {
+                    if (daftarAntrian.get(i).daftarPasienAntri.get(j).getbulanLahir()==bulan) {
+                        if (daftarAntrian.get(i).daftarPasienAntri.get(j).gettahunLahir()==tahun) {
+                            result = daftarAntrian.get(i).daftarPasienAntri.get(j);
+                        }
+                    }
+                }
+            }
+            }
+
+        }
+            return result;
+    }  
+     
+     public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+         
+     }
+     
+     
+     
+     }
+     
+     
     
     
-}
+    
+    
+

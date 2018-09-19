@@ -40,7 +40,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
     private JButton tambahButton;
      private String tgl[] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"
     ,"21","22","23","24","25","26","27","28","29","30","31"};
-    private String bln[]={"01","02","03","04","05","06","07","08","09","10","11","12"};
+    private String bln[]={"1","2","3","4","5","6","7","8","9","10","11","12"};
     private String thn[]={"1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007"
     ,"2008","2009","2010","2011","2012","2013"
     ,"2014","2015","2016","2017","2018"};
@@ -67,8 +67,9 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
     public void init(){
         this.setLayout(null);//set layout null
         
-        judulLabel = new JLabel("Pasien Baru");//object judulLabel bertipe JLabel
-        judulLabel.setFont(new Font(null, Font.CENTER_BASELINE, 16));//mengatur font
+        judulLabel = new JLabel();//object judulLabel bertipe JLabel
+        judulLabel.setText("Form Pasien Baru");
+        judulLabel.setFont(new Font(null, Font.BOLD, 16));//mengatur font
         setBounds(70, 20, 150, 10);//mengatur tata letak
         this.add(judulLabel);
         
@@ -144,17 +145,22 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        try{
  if (e.getSource() == tambahButton) {//pembanding jika yang diklik tambahButton
             Pasien baru = new Pasien();
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());
             baru.setRekamMedis(nikText.getText());
-
+            baru.setNik(nikText.getText());
+            baru.setTanggalLahir(tanggalCombo.getSelectedIndex());
+            baru.setbulanLahir(bulanCombo.getSelectedIndex());
+            baru.settahunLahir(tahunCombo.getSelectedIndex());
             Pasien.tambahPasienBaru(baru);
-
             JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
-
             this.dispose();
+        }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
         }
 }
 

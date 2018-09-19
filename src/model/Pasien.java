@@ -185,8 +185,12 @@ public class Pasien {
         return nik;
     }
     
-    public void setNik(String nik) {
-        nik = Mendaftar();
+    public void setNik(String Nik) throws Exception {
+        if (Nik.length()== 16) {
+            this.nik=Nik;
+        }else{
+            throw new Exception("NIK terdiri dari 16 digit");
+        }
     }
     
     public static ArrayList<Pasien> getDaftarpasienKlinik() {
