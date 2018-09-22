@@ -218,7 +218,7 @@ public class AntrianPasien {
          if (CariAntrian(tanggal, bulan, tahun, klinik) < 0) {
              daftarAntrian.add(antri);
          }else{
-             System.out.println(klinik.getNamaKlinik()+" Sudah ada");
+             System.out.println("Antrian nomor "+klinik.getNamaKlinik()+" sudah ada");
          }
      }
      
