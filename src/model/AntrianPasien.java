@@ -186,27 +186,54 @@ public class AntrianPasien {
     }
      
      public static Pasien cariPasien(String noRM, int tanggal, int bulan, int tahun){ 
-        Pasien result = null;
-        boolean found = false;
-        for (int i = 0; i < daftarAntrian.size(); i++) {
-            for (int j = 0; j < daftarAntrian.get(i).daftarPasienAntri.size(); j++) {
-             if (daftarAntrian.get(i).daftarPasienAntri.get(j).getNik().equals(noRM)) {
-                if (daftarAntrian.get(i).daftarPasienAntri.get(j).getTanggalLahir()==tanggal) {
-                    if (daftarAntrian.get(i).daftarPasienAntri.get(j).getbulanLahir()==bulan) {
-                        if (daftarAntrian.get(i).daftarPasienAntri.get(j).gettahunLahir()==tahun) {
-                            result = daftarAntrian.get(i).daftarPasienAntri.get(j);
-                        }
-                    }
-                }
-            }
-            }
-
-        }
-            return result;
+         for (int i = 0; i < daftarAntrian.size(); i++) {
+             if (daftarAntrian.get(i).daftarPasienAntri.get(i).getRekamMedis().equalsIgnoreCase(noRM)) {
+                 return daftarAntrian.get(i).daftarPasienAntri.get(i);
+             }
+         }
+         return null;
     }  
      
+     public static void daftarAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+         int K = CariAntrian(tanggal, bulan, tahun, klinik);
+         if(K >= 0){
+             
+         }else{
+             AntrianPasien antri = new AntrianPasien();
+             antri.setTanggalAntri(tanggal);
+             antri.setBulanAntri(bulan);
+             antri.setTahunAntri(tahun);
+             antri.setKlinik(klinik);
+             daftarAntrian.add(antri);
+         }
+     }
+     
      public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+         AntrianPasien antri = new AntrianPasien();
+         antri.setTanggalAntri(tanggal);
+         antri.setBulanAntri(bulan);
+         antri.setTahunAntri(tahun);
+         antri.setKlinik(klinik);
          
+         if (CariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+             daftarAntrian.add(antri);
+         }else{
+             System.out.println(klinik.getNamaKlinik()+" Sudah ada");
+         }
+     }
+     
+     public static int CariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+         for (int i = 0; i < daftarAntrian.size(); i++) {
+             if (daftarAntrian.get(i).getTanggalAntri()== tanggal
+                     && daftarAntrian.get(i).getBulanAntri() == bulan
+                     && daftarAntrian.get(i).getTahunAntri()== tahun
+                     && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik())
+                     && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())) {
+                 return i;
+             }
+             
+         }
+         return -1;
      }
      
      

@@ -67,13 +67,13 @@ public class FrameUtama extends JFrame implements ActionListener {
         }
         if (e.getSource() == tambahPasienMenuItem) {
             TambahPasienBaruDialog test = new TambahPasienBaruDialog();//membandingkan jika yg di klik adalah tambahPasienMenuItem
-            test.setSize(300, 400);
+            test.setSize(700, 400);
             test.setVisible(true);
         }
         
         if (e.getSource() == tambahAntrianMenuItem) {
             TambahAntrianDialog test1 = new TambahAntrianDialog();//membandingkan jika yg di klik adalah tambahAntrianMenuItem
-            test1.setSize(300, 400);
+            test1.setSize(700, 400);
             test1.setVisible(true);
         }
     }
