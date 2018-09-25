@@ -52,7 +52,6 @@ public class AntrianPasien {
      * membuat method getBulanAntri dengan tipe int untuk mengembalikan nilia menggunakan
      * @return bulanAntri
      */
-
     public int getBulanAntri() {
         return bulanAntri;
     }
@@ -62,7 +61,6 @@ public class AntrianPasien {
      * bulanAntri global dan variabel bulanAntri lokal
      * @param bulanAntri 
      */
-
     public void setBulanAntri(int bulanAntri) {
         this.bulanAntri = bulanAntri;
     }
@@ -71,7 +69,6 @@ public class AntrianPasien {
      *  membuat method getTahunAntri dengan tipe int untuk mengembalikan nilia menggunakan
      * @return tahunAntri
      */
-
     public int getTahunAntri() {
         return tahunAntri;
     }
@@ -81,7 +78,6 @@ public class AntrianPasien {
      * tahunAntri global dan variabel tahunlAntri lokal
      * @param tahunAntri 
      */
-
     public void setTahunAntri(int tahunAntri) {
         this.tahunAntri = tahunAntri;
     }
@@ -90,17 +86,15 @@ public class AntrianPasien {
      * membuat method getNomorAntri dengan tipe int untuk mengembalikan nilia menggunakan
      * @return nomorAntri
      */
-
     public int getNomorAntri() {
         return nomorAntri;
     }
-    
+  
     /***
      * membuat method setNomorAntri bertipe void untuk menyamakan nilai variabel
      * nomorAntri global dan variabel nomorAntri lokal
      * @param nomorAntri 
      */
-
     public void setNomorAntri(int nomorAntri) {
         this.nomorAntri = nomorAntri;
     }
@@ -109,7 +103,6 @@ public class AntrianPasien {
      * membuat method getKlnik dengan tipe Klinik untuk mengembalikan nilia menggunakan
      * @return klinik
      */
-
     public Klinik getKlinik() {
         return klinik;
     }
@@ -119,7 +112,6 @@ public class AntrianPasien {
      * klinik global dan variabel Klinik lokal
      * @param klinik
      */
-
     public void setKlinik(Klinik klinik) {
         this.klinik = klinik;
     }
@@ -128,7 +120,6 @@ public class AntrianPasien {
      * membuat method getDaftarPasien dengan tipe Pasien[] untuk mengembalikan nilia menggunakan
      * @return DaftarPasien
      */
-
     public Pasien[] getDaftarPasien() {
         return DaftarPasien;
     }
@@ -138,7 +129,6 @@ public class AntrianPasien {
      * DaftarPasien global dan variabel DaftarPasien lokal
      * @param DaftarPasien 
      */
-
     public void setDaftarPasien(Pasien[] DaftarPasien) {
         this.DaftarPasien = DaftarPasien;
     }
@@ -147,8 +137,7 @@ public class AntrianPasien {
      * method ini digunakana untuk mendaftar pasien baru pada nomor antrian
      * @param pasien
      * @throws Exception 
-     */
-    
+     */    
     public void daftar(Pasien pasien)throws Exception{
         //menentukan dan mengecek nomor antrian pasien dengan jumlah maksimal pasien yang dilayani
         if(nomorAntri < JUMLAH_PASIEN_MAKSIMAL){
@@ -173,6 +162,11 @@ public class AntrianPasien {
         daftarPasienAntri.add(pasien);
     }
     
+    /***
+     * method yang digunakan untuk mencari pasien menggunakan nomor rekam medis yang sudah terdaftar
+     * @param NoRM
+     * @return 
+     */
      public static AntrianPasien cariPasien(String NoRM) {
         AntrianPasien result = null;
         boolean found = false;

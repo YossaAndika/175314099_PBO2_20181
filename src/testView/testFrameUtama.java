@@ -14,7 +14,7 @@ import view.FrameUtama;
 public class testFrameUtama {
     public static void main(String[] args) {
         FrameUtama test = new FrameUtama();
-        test.setSize(600, 400);
+        test.setSize(700, 400);
         test.setVisible(true);
     }
 }

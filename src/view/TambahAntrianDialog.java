@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import model.Pasien;
 import java.awt.Button;
 import java.awt.Font;
@@ -27,43 +28,34 @@ import static org.omg.CORBA.ORB.init;
  */
 public class TambahAntrianDialog extends JDialog implements ActionListener {
 
-    private JLabel judulLabel;
-    private JLabel namaLabel;
-    private JLabel noRMLabel;
-    private JLabel alamatLabel;
-    private JLabel tanggalAntri;
-    private JLabel klinik;
-    private JTextField namaText;
-    private JTextField noRMText;
-    private JTextField alamatText;
+    private JLabel judulLabel, namaLabel, noRMLabel, alamatLabel, tanggalAntri, klinik;
+    private JTextField namaText, noRMText, alamatText;
     private JButton tambahButton;
-    private JComboBox tanggal;
-    private JComboBox bulan;
-    private JComboBox tahun;
+    private JTextField tanggal, bulan, tahun;
     private JComboBox klinikCombo;
-    private String tgl[] = {"Tanggal","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"
-    ,"21","22","23","24","25","26","27","28","29","30","31"};
-    private String bln[]={"Bulan","1","2","3","4","5","6","7","8","9","10","11","12"};
-    private String thn[]={"Tahun","17","18"};
-    private String Klinik[]={"PILIH","THT","Kulit","Kandungan","Penyakit Dalam","Mata","Radiologi"};
-    
-    /***
+    private String Klinik[] = {"PILIH", "THT", "Kulit", "Kandungan", "Penyakit Dalam", "Mata", "Radiologi"};
+
+    /**
+     * *
      * digunakan untuk membuat object
      */
     public TambahAntrianDialog() {
         init();//konstruktor memanggil init()
     }
 
-    /***
+    /**
+     * *
      * digunakan untuk membuat object dengan variabel title bertipe String
-     * @param title 
+     *
+     * @param title
      */
     public TambahAntrianDialog(String title) {
         this.setTitle(title);//set title dengan variabel lokal title
         init();//konstruktor memanggil init()
     }
 
-    /***
+    /**
+     * *
      * digunakan untuk membuat tampilan
      */
     public void init() {
@@ -101,20 +93,20 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         alamatText = new JTextField();//object alamatText bertipe JLabel
         alamatText.setBounds(150, 130, 120, 20);//mengatur tata letak judulLabel
         this.add(alamatText);//menambahkan ke TambahAntrianDialog
-        
+
         tanggalAntri = new JLabel("Tanggal Antri");
         tanggalAntri.setBounds(50, 160, 95, 20);//mengatur tata letak judulLabel
         this.add(tanggalAntri);//menambahkan ke TambahAntrianDialog
-        
-        tanggal = new JComboBox(tgl);
+
+        tanggal = new JTextField();
         tanggal.setBounds(150, 160, 90, 20);//mengatur tata letak judulLabel
         this.add(tanggal);//menambahkan ke TambahAntrianDialog
-        
-        bulan = new JComboBox(bln);
+
+        bulan = new JTextField();
         bulan.setBounds(250, 160, 90, 20);//mengatur tata letak judulLabel
         this.add(bulan);//menambahkan ke TambahAntrianDialog
-        
-        tahun = new JComboBox(thn);
+
+        tahun = new JTextField();
         tahun.setBounds(350, 160, 90, 20);//mengatur tata letak judulLabel
         this.add(tahun);//menambahkan ke TambahAntrianDialog
 
@@ -122,7 +114,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         klinik.setText("Nama Klinik");
         klinik.setBounds(50, 190, 100, 20);//mengatur tata letak judulLabel
         this.add(klinik);//menambahkan ke TambahAntrianDialog
-        
+
         klinikCombo = new JComboBox(Klinik);
         klinikCombo.setBounds(150, 190, 200, 20);//mengatur tata letak judulLabel
         this.add(klinikCombo);//menambahkan ke TambahAntrianDialog
@@ -142,31 +134,39 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         tahun.addActionListener(this);
         /*memanggil addActionListener*/
 
-        
     }
 
-    /***
+    /**
+     * *
      * digunakan untuk pengoprasian tiap object
-     * @param ae 
+     *
+     * @param ae
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Pasien test = Pasien.cariPasien(noRMText.getText());
-        if (ae.getSource() == noRMText) {//pembanding jika yang di klik noRMText
+         Pasien test = Pasien.cariPasien(noRMText.getText());
+        if (ae.getSource() == noRMText) {
             Pasien cari = Pasien.cariPasien(noRMText.getText());
             
-            if (cari != null) {//pembanding jika variabel cari tidak sama null
+            if (cari != null) {
                 namaText.setText(cari.getNama());
                 alamatText.setText(cari.getAlamat());
+                String tanggal = String.valueOf(cari.getTanggalLahir());
+                String bulan = String.valueOf(cari.getbulanLahir());
+                String tahun = String.valueOf(cari.gettahunLahir());
+                this.tanggal.setText(tanggal);
+                this.bulan.setText(bulan);
+               this.tahun.setText(tahun);
             }
         }
-        if (ae.getSource() == tambahButton) {//pembanding jika yang di klik tambahButton
+        if (ae.getSource() == tambahButton) {
             for (int i = 0; i < Pasien.daftarpasienKlinik.size(); i++) {
                 int antri = i+1;
                 if (test == Pasien.daftarpasienKlinik.get(i)) {
                     JOptionPane.showMessageDialog(null, "Antian Nomor :"+antri);
                 }
             }
+            this.dispose();
         }
     }
 }
