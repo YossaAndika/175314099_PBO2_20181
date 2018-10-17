@@ -6,9 +6,16 @@
 
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -193,11 +200,11 @@ public class Pasien {
         }
     }
     
-    public static ArrayList<Pasien> getDaftarpasienKlinik() {
+    public static ArrayList<Pasien> getDaftarPasien() {
         return daftarpasienKlinik;
     }
 
-    public static void setDaftarpasienKlinik(ArrayList<Pasien> daftarpasienKlinik) {
+    public static void setDaftarPasien(ArrayList<Pasien> daftarpasienKlinik) {
         Pasien.daftarpasienKlinik = daftarpasienKlinik;
     }
 
@@ -237,4 +244,65 @@ public class Pasien {
         }
             return result;
     }
+    
+    public static void simpanDaftarPasien(File file){
+        FileOutputStream fos = null;
+        try{
+            fos = new FileOutputStream(file, true);
+            for (int i = 0; i < daftarpasienKlinik.size(); i++) {
+                String data = daftarpasienKlinik.get(i).toString();
+                fos.write(data.getBytes());   
+            }
+        }catch(FileNotFoundException ex){
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            try{
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+    }
+    
+    public static void bacaDaftarPasien(File file){
+        FileInputStream fis = null;
+        Pasien tmp = new Pasien();
+        boolean nama = false;
+        boolean alamat = false;
+        String hasil = "";
+        int data;
+        try{
+            fis = new FileInputStream(file);
+            while ((data = fis.read()) > 0){
+                if ((char) data != '\n') {
+                    if ((char)data != '\t') {
+                        hasil = hasil + daftarpasienKlinik.add(tmp);
+                    }else if(nama = false){
+                        tmp.setNama(hasil);
+                        nama = true;
+                        hasil="";
+                    }
+                }else if(alamat = false){
+                    tmp.setAlamat(hasil);
+                    alamat=true;
+                    hasil="";
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Nama : "+nama+", Alamat : "+alamat+", No Rekam Medis : "+RekamMedis;
+    }
+    
+    
 }
