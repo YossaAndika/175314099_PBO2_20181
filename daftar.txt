@@ -1,1 +1,2 @@
-model.Pasien@1db9742model.Pasien@106d69cmodel.Pasien@1db9742model.Pasien@106d69cNama : adi, Alamat : klatenNama : null, Alamat : nullNama : adi, Alamat : klatenNama : null, Alamat : nullNama : puspa, Alamat : klatenNama : adi, Alamat : klatenNama : puspa, Alamat : klatenNama : adi, Alamat : klatenNama : puspa, Alamat : klatenNama : adi, Alamat : klatenNama : puspa, Alamat : klatenNama : adi, Alamat : klatenNama : puspa, Alamat : klaten, No Rekam Medis : 001Nama : adi, Alamat : klaten, No Rekam Medis : 002
+puspa	klaten	001
+adi	klaten	002
