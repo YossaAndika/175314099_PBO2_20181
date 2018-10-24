@@ -7,6 +7,7 @@ package test;
 
 import java.io.File;
 import model.Pasien;
+import model.RumahSakit;
 
 /**
  *
@@ -14,9 +15,9 @@ import model.Pasien;
  */
 public class TestStream2 {
     public static void main(String[] args) {
-        Pasien.bacaDaftarPasien(new File("daftar.txt"));
-        for (int i = 0; i < Pasien.getDaftarPasien().size(); i++) {
-            System.out.println(Pasien.getDaftarPasien().get(i).toString());
+        RumahSakit.bacaDaftarPasien(new File("daftar.txt"));
+        for (int i = 0; i < RumahSakit.getDaftarPasien().size(); i++) {
+            System.out.println(RumahSakit.getDaftarPasien().get(i).toString());
            
         }
     }

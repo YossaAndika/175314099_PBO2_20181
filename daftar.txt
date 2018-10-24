@@ -1,2 +1,1 @@
-puspa	klaten	001
-adi	klaten	002
+model.Pasien@15db9742model.Pasien@6d06d69c

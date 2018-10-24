@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author admin
  */
-public class Pasien {
+public class Pasien implements Serializable{
 
     private String nama;
     private int tanggalLahir;
@@ -30,7 +31,7 @@ public class Pasien {
     private int tahunLahir;
     private String RekamMedis;
     private String nik;
-    public static ArrayList<Pasien> daftarpasienKlinik = new ArrayList<Pasien>();
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
      * *
@@ -211,6 +212,16 @@ public class Pasien {
         return nik;
     }
 
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasien = daftarPasien;
+    }
+
+    public ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
+    }
+    
+    
+
     public void setNik(String Nik) throws Exception {
         if (Nik.length() == 16) {
             this.nik = Nik;
@@ -218,15 +229,7 @@ public class Pasien {
             throw new Exception("NIK terdiri dari 16 digit");
         }
     }
-
-    public static ArrayList<Pasien> getDaftarPasien() {
-        return daftarpasienKlinik;
-    }
-
-    public static void setDaftarPasien(ArrayList<Pasien> daftarpasienKlinik) {
-        Pasien.daftarpasienKlinik = daftarpasienKlinik;
-    }
-
+    
     /**
      * *
      * method ini digunakan untuk mengatur foramat rekam medis pasien dengan
@@ -248,29 +251,14 @@ public class Pasien {
         //mengembalikan nilai RekamMedis
         return RekamMedis = ft.format(date).concat(sub_nama);
     }
-
-    public static void tambahPasienBaru(Pasien pasien) {
-        daftarpasienKlinik.add(pasien);
-    }
-
-    public static Pasien cariPasien(String NoRM) {
-        Pasien result = null;
-        boolean found = false;
-        for (int i = 0; i < daftarpasienKlinik.size(); i++) {
-            if (daftarpasienKlinik.get(i).getNik().equals(NoRM)) {
-                found = true;
-                result = daftarpasienKlinik.get(i);
-            }
-        }
-        return result;
-    }
-
-    public static void simpanDaftarPasien(File file) {
+    
+    
+     public void simpanDaftarPasien(File file) {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
-            for (int i = 0; i < daftarpasienKlinik.size(); i++) {
-                String data = daftarpasienKlinik.get(i).toString();
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
                 fos.write(data.getBytes());
             }
         } catch (FileNotFoundException ex) {
@@ -298,25 +286,25 @@ public class Pasien {
         try {
             fis = new FileInputStream(file);
             while ((data = fis.read()) != -1) {
-             if((char)data != '\t'){
                 if ((char) data != '\t') {
-                    if ((char) data != '\n') {
-                        hasil = hasil + (char) data;
-                    } else if (nama = false) {
-                        tmp.setNama(hasil);
-                        nama = true;
+                    if ((char) data != '\t') {
+                        if ((char) data != '\n') {
+                            hasil = hasil + (char) data;
+                        } else if (nama = false) {
+                            tmp.setNama(hasil);
+                            nama = true;
+                            hasil = "";
+                        }
+                    } else if (alamat = false) {
+                        tmp.setAlamat(hasil);
+                        alamat = true;
                         hasil = "";
                     }
-                } else if (alamat = false) {
-                    tmp.setAlamat(hasil);
-                    alamat = true;
+                } else if (rekamMedis = false) {
+                    tmp.setRekamMedis(hasil);
+                    rekamMedis = true;
                     hasil = "";
                 }
-            }else if(rekamMedis = false){
-                tmp.setRekamMedis(hasil);
-                rekamMedis = true;
-                hasil="";
-            }
             }
             System.out.println(hasil);
         } catch (FileNotFoundException ex) {
@@ -326,10 +314,11 @@ public class Pasien {
         }
 
     }
-
-    @Override
+    
+        @Override
     public String toString() {
-        return nama + '\t' + alamat + '\t' + RekamMedis + '\n';
+        Pasien pasien = new Pasien();
+        return nama + "\t" + alamat + "\t" +"\t" + RekamMedis + "\n";
     }
 
 }
